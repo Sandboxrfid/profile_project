@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prashant Singh Tomar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Collage Container */
+        .collage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1; /* Behind all content */
+            overflow: hidden;
+        }
+
+        /* Collage Box Styles with Different Shapes and Depth Effect */
+        .collage-box {
+            position: absolute;
+            background: #b89876;
+            padding: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(calc(var(--rotation-angle) * 1deg)); /* Add rotation to create depth */
+        }
+
+        .collage img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            object-fit: contain; /* Avoid stretching */
+            border-radius: 10px;
+        }
+
+        /* Container styling */
+        .container {
+            background: rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+            animation: fadeInContainer 3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        @keyframes fadeInContainer {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1, h2, p, a {
+            animation: fadeIn 3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-links {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+            animation: fadeInLinks 2s ease-in-out;
+        }
+
+        @keyframes fadeInLinks {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .contact {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            animation: slideIn 3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="collage" id="collageContainer"></div>
+    
+    <div class="nav-links">
+        <a href="#education">Education</a>
+        <a href="#trainings">Trainings</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="container">
+        <h1>Prashant Singh Tomar</h1>
+        <p><strong>Address:</strong> H.No.F-7, Dwarka Dham Colony, New Jail Road, Karond, Bhopal, M.P. - 462038</p>
+        <p><strong>Email:</strong> <a href="mailto:prashantt8695@icloud.com">Mail</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+917470744568">Call</a></p>
+        <p><strong>Nationality:</strong> Indian</p>
+        <p><strong>Date of Birth:</strong> 08.06.1995</p>
+
+        <h2 id="education">Education</h2>
+        <p><strong>Secondary (2010-11):</strong> Swami Vivekanand Public, Rajgarh (Biora), CGPA: 6.6</p>
+        <p><strong>Higher Secondary (2014):</strong> Govt. H.S. Excellence School No.1, Shajapur, Percentage: 66.6%</p>
+        <p><strong>B.Tech:</strong> SHAUTS, Allahabad, CGPA: 7.45</p>
+
+        <h2 id="trainings">Trainings</h2>
+        <p><strong>ICAR Research Complex for NEH Region:</strong> June 2017</p>
+        <p><strong>AutoCAD Training:</strong> March 2016 at UPTEC Computer Consultancy Ltd.</p>
+
+        <h2 id="certificates">Certificates and Workshops</h2>
+        <p>N.S.S., National Workshop on "My Earth My Duty"</p>
+        <p>Robotryst 2015 (IIT-Delhi) on "Arduino Microcontroller"</p>
+
+        <h2 id="skills">Skills</h2>
+        <p><strong>Languages:</strong> Hindi, English</p>
+        <p><strong>Social:</strong> Team spirit, communication, adaptability, analytical skills</p>
+        <p><strong>Organizational:</strong> Deadline management, project/team management experience</p>
+        <p><strong>Computer:</strong> Microsoft Office (Word, Excel, PowerPoint), Basic graphic design (AutoCAD)</p>
+
+        <div id="contact" class="contact">
+            <div class="contact-item"><strong>Get in Touch:</strong></div>
+            <div class="contact-item">Feel free to reach me via email or phone for any professional queries.</div>
+        </div>
+    </div>
+
+<!-- JavaScript for randomizing images and creating 50 collage boxes -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const collageImages = [
+            'assets/image1.jpg',
+            'assets/image2.jpg',
+            'assets/image3.jpg',
+            'assets/image4.jpg',
+            'assets/image5.jpg',
+            'assets/image6.jpg',
+            'assets/image7.jpg',
+            'assets/image8.jpg',
+            'assets/image9.jpg',
+            'assets/image10.jpg',
+            'assets/image11.jpg',
+            'assets/image12.jpg',
+            'assets/image13.jpg',
+            'assets/image14.jpg',
+            'assets/image15.jpg',
+            'assets/image16.jpg',
+            'assets/image17.jpg',
+            'assets/image18.jpg',
+            'assets/image19.jpg',
+            'assets/image20.jpg',
+            'assets/image21.jpg'
+        ];
+
+        // Filter available images to include only those that exist
+        const availableImages = collageImages.filter((img) => {
+            const http = new XMLHttpRequest();
+            http.open('HEAD', img, false);
+            http.send();
+            return http.status !== 404;
+        });
+
+        const collageContainer = document.getElementById("collageContainer");
+
+        // Loop to create at least 50 collage boxes
+        for (let i = 0; i < 50; i++) {
+            const collageBox = document.createElement("div");
+            collageBox.className = "collage-box";
+            collageBox.style.setProperty('--rotation-angle', Math.random() * 20 - 10); // Random rotation for depth
+
+            const imgElement = document.createElement("img");
+            // Pick a random image from available images
+            const randomIndex = Math.floor(Math.random() * availableImages.length);
+            imgElement.src = availableImages[randomIndex];
+
+            collageBox.appendChild(imgElement);
+
+            // Randomize position for abstract design
+            collageBox.style.width = `${Math.random() * 20 + 10}%`;
+            collageBox.style.top = `${Math.random() * 90}%`;
+            collageBox.style.left = `${Math.random() * 90}%`;
+
+            collageContainer.appendChild(collageBox);
+        }
+    });
+</script>
+
+    <script src="/assets/script.js"></script>
+
+</body>
+</html>
+
